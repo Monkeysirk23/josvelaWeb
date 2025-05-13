@@ -1,0 +1,169 @@
+﻿/* === Estilos Generales === */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Fondo claro */
+    color: #333; /* Texto oscuro */
+    line-height: 1.6; /* Espaciado entre líneas */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* === Cabecera (Header) === */
+header {
+    background-color: #4CAF50; /* Fondo verde */
+    color: white; /* Texto blanco */
+    text-align: center;
+    padding: 1.5em 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+    header h1 {
+        font-size: 2.5em;
+        margin: 0;
+    }
+
+/* === Barra de Navegación (Nav) === */
+nav {
+    background-color: #333; /* Fondo oscuro */
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+    gap: 1em; /* Espaciado entre enlaces */
+}
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0.5em 1em;
+        border-radius: 5px; /* Esquinas redondeadas */
+        transition: background-color 0.3s ease; /* Animación suave */
+    }
+
+        nav a:hover {
+            background-color: #4CAF50; /* Fondo verde al pasar el mouse */
+        }
+
+/* === Contenedor Principal (Main) === */
+main {
+    display: flex;
+    flex-direction: row;
+    gap: 1em; /* Espaciado entre elementos */
+    padding: 1em;
+}
+
+section {
+    flex: 3;
+    background-color: white;
+    padding: 1.5em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+    section.active {
+        display: block; /* Solo la sección activa es visible */
+    }
+
+    section h2 {
+        color: #4CAF50; /* Verde para los títulos */
+        margin-bottom: 1em;
+    }
+
+/* === Barra Lateral (Aside) === */
+aside {
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 1.5em;
+    border-left: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+    aside h3 {
+        color: #4CAF50;
+        margin-bottom: 1em;
+    }
+
+    aside ul {
+        list-style: none; /* Quita los puntos de la lista */
+        padding: 0;
+    }
+
+        aside ul li {
+            margin-bottom: 0.5em;
+        }
+
+            aside ul li a {
+                color: #333;
+                text-decoration: none;
+                font-weight: bold;
+                transition: color 0.3s ease;
+            }
+
+                aside ul li a:hover {
+                    color: #4CAF50; /* Verde al pasar el mouse */
+                }
+
+/* === Formulario === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em; /* Espaciado entre campos */
+}
+
+    form input, form textarea {
+        width: 100%;
+        padding: 0.8em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+
+    form button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 0.8em;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        form button:hover {
+            background-color: #45a049; /* Color más oscuro al pasar el mouse */
+        }
+
+#mensajeEnviado {
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+/* === Pie de Página (Footer) === */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    margin-top: 1em;
+    font-size: 0.9em;
+}
+
+/* === Animaciones y Transiciones === */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+    section.active {
+        opacity: 1;
+        transform: translateY(0);
+    }

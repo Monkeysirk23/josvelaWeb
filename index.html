@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Página Web</title>
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script> <!-- Script de EmailJS -->
+    <script>
+        // Inicializa EmailJS con tu ID de usuario
+        emailjs.init("TU_USER_ID"); // Reemplaza con tu User ID de EmailJS
+
+        // Función para manejar envío del formulario
+        function enviarFormulario(event) {
+            event.preventDefault(); // Previene el recargo de página
+
+            // Obtén los valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            // Configura los parámetros para enviar el correo
+            const parametros = {
+                from_name: nombre,
+                from_email: email,
+                message: mensaje,
+            };
+
+            // Envía el correo usando EmailJS
+            emailjs.send("service_5cwf7cu", "template_tsgotoy", parametros)
+                .then(() => {
+                    document.getElementById('mensajeEnviado').innerText = `Gracias, ${nombre}. Tu mensaje ha sido enviado.`;
+                    document.getElementById('mensajeEnviado').style.color = "green";
+                })
+                .catch((error) => {
+                    document.getElementById('mensajeEnviado').innerText = `Error al enviar el mensaje. Inténtalo de nuevo.`;
+                    document.getElementById('mensajeEnviado').style.color = "red";
+                    console.error("Error:", error);
+                });
+        }
+
+        // Función para mostrar una sección específica
+        function mostrarSeccion(id) {
+            const secciones = document.querySelectorAll('section'); // Todas las secciones
+            secciones.forEach(sec => sec.classList.remove('active')); // Oculta todas
+            const activa = document.getElementById(id); // Busca la que queremos mostrar
+            if (activa) activa.classList.add('active'); // La hace visible
+        }
+    </script>
+</head>
+<body>
+    <!-- Cabecera principal con título -->
+    <header>
+        <h1>Hola Bienvenido a Mi Primer Sitio Web</h1>
+    </header>
+
+    <!-- Menú de navegación con enlaces -->
+    <nav>
+        <a class="enlace" onclick="mostrarSeccion('inicio')">Inicio</a>
+        <a class="enlace" onclick="mostrarSeccion('sobreMi')">Sobre mí</a>
+        <a class="enlace" onclick="mostrarSeccion('contacto')">Contacto</a>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <main>
+        <!-- Sección de inicio -->
+        <section id="inicio" class="active">
+            <h2>Inicio</h2>
+            <p>Bienvenido a mi sitio web. Aquí podrás conocer más sobre mí y cómo contactarme.</p>
+            <img class="imagen-redondeada" src="https://ashisheditz.com/wp-content/uploads/2024/06/frases-chidas-para-foto-de-perfil-facebook.jpg" alt="Descripción de la imagen">
+        </section>
+
+        <!-- Sección sobre mí -->
+        <section id="sobreMi">
+            <h2>Sobre mí</h2>
+            <p>¡Hola! Soy Jose, una persona apasionada por la tecnología. Desde muy joven, siempre he tenido una curiosidad insaciable por mi superación personal. Aunque actualmente, tengo un trabajo totalmente distinto a lo que estoy estudiando, no pierdo las esperanzas de un día encontrar esa oportunidad para poder brillar y explotar mis conocimientos. En mi tiempo libre, disfruto de practicar deportes y escuchar música. Me encanta conectar con nuevas personas y aprender de sus experiencias, ya que creo que cada encuentro es una oportunidad para crecer. Estoy emocionado por lo que el futuro tiene reservado y siempre busco nuevas aventuras y desafíos.</p>
+            <img class="imagen-redondeada" src="https://fotografias.antena3.com/clipping/cmsimages01/2023/05/31/EE78574C-0B0C-4432-9C3D-50D86B3571FE/joven-estudiando_98.jpg?crop=910,512,x58,y0&width=1900&height=1069&optimize=low&format=webply" alt="Descripción de la imagen">
+        </section>
+
+        <!-- Sección de contacto con formulario -->
+        <section id="contacto">
+            <h2>Formulario de Contacto</h2>
+            <form onsubmit="enviarFormulario(event)">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" rows="4" required></textarea>
+
+                <button class="boton" type="submit">Enviar</button>
+            </form>
+            <p id="mensajeEnviado"></p>
+        </section>
+
+        <!-- Barra lateral con enlaces a redes sociales -->
+        <aside>
+            <h3>Otras Informaciones</h3>
+            <p>Puedes encontrar más sobre mí en las siguientes redes sociales:</p>
+            <ul>
+                <li><a href="https://www.facebook.com/profile.php?id=100008936978690" target="_blank">📘 Facebook</a></li>
+                <li><a href="https://www.youtube.com/watch?v=zMYkaK5-Ff8" target="_blank">🎧 Canción Fav.</a></li>
+                <li><a href="https://tiktok.com/@tuusuario" target="_blank">🎵 TikTok</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        &copy; 2025 Mi Página Web
+    </footer>
+</body>
+</html>
