@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <title>Mi Página Web</title>
     <link href="StyleSheet1.css" rel="stylesheet" />
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script> <!-- Script de EmailJS -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Inicializa EmailJS con tu ID de usuario
-        emailjs.init("TU_USER_ID"); // Reemplaza con tu User ID de EmailJS
+        // Inicializa EmailJS con tu API Key pública
+        emailjs.init("eVnKRCKIqi4y9Gcbs");
 
         // Función para manejar envío del formulario
         function enviarFormulario(event) {
             event.preventDefault(); // Previene el recargo de página
 
             // Obtén los valores del formulario
+            const para = document.getElementById('para').value;
             const nombre = document.getElementById('nombre').value;
             const email = document.getElementById('email').value;
             const mensaje = document.getElementById('mensaje').value;
 
             // Configura los parámetros para enviar el correo
             const parametros = {
+                to_email: para,         // destinatario dinámico
                 from_name: nombre,
                 from_email: email,
                 message: mensaje,
@@ -40,17 +42,17 @@
 
         // Función para mostrar una sección específica
         function mostrarSeccion(id) {
-            const secciones = document.querySelectorAll('section'); // Todas las secciones
-            secciones.forEach(sec => sec.classList.remove('active')); // Oculta todas
-            const activa = document.getElementById(id); // Busca la que queremos mostrar
-            if (activa) activa.classList.add('active'); // La hace visible
+            const secciones = document.querySelectorAll('section');
+            secciones.forEach(sec => sec.classList.remove('active'));
+            const activa = document.getElementById(id);
+            if (activa) activa.classList.add('active');
         }
     </script>
 </head>
 <body>
     <!-- Cabecera principal con título -->
     <header>
-        <h1>Hola Bienvenido a Mi Primer Sitio Web</h1>
+        <h1>Bienvenido a Mi Primer Sitio Web</h1>
     </header>
 
     <!-- Menú de navegación con enlaces -->
@@ -80,6 +82,9 @@
         <section id="contacto">
             <h2>Formulario de Contacto</h2>
             <form onsubmit="enviarFormulario(event)">
+                <label for="para">Para:</label>
+                <input type="email" id="para" required>
+
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" required>
 
@@ -97,11 +102,11 @@
         <!-- Barra lateral con enlaces a redes sociales -->
         <aside>
             <h3>Otras Informaciones</h3>
-            <p>Puedes encontrar más sobre mí en las siguientes redes sociales:</p>
+            <p>Puedes conocer más sobre mí en los siguientes enlaces:</p>
             <ul>
                 <li><a href="https://www.facebook.com/profile.php?id=100008936978690" target="_blank">📘 Facebook</a></li>
                 <li><a href="https://www.youtube.com/watch?v=zMYkaK5-Ff8" target="_blank">🎧 Canción Fav.</a></li>
-                <li><a href="https://tiktok.com/@tuusuario" target="_blank">🎵 TikTok</a></li>
+                <li><a href="https://www.google.com/search?sa=X&sca_esv=37fc636019816125&rlz=1C1ALOY_esGT1044GT1044&biw=1536&bih=742&q=the+boys&si=APYL9bspescNnT_dJc-tbSluK8caaVP2vN_fBK4piVJt-U-FgEwju44ZVAKr7GFr3LmCIRsnXVXI1tuC2IDJ6oCevq_3O_uw5CAJ1oxgRWRrznET-UBSLhc%3D&ved=2ahUKEwjnp_rb8LWNAxUjoLAFHQ_BBBoQyNoBKAB6BAgYEAA&ictx=1&cshid=1747875794763630" target="_blank">🍿 Serie Fav</a></li>
             </ul>
         </aside>
     </main>
@@ -112,3 +117,4 @@
     </footer>
 </body>
 </html>
+
